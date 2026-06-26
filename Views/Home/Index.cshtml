@@ -116,50 +116,6 @@
 
     </div>
 </section>
-<section id="contact">
-
-    <form asp-action="Contact" method="post">
-
-        <div class="mb-3">
-            <input asp-for="Name"
-                   class="form-control"
-                   placeholder="Your Name" />
-            <span asp-validation-for="Name"
-                  class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <input asp-for="Email"
-                   class="form-control"
-                   placeholder="Your Email" />
-            <span asp-validation-for="Email"
-                  class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <input asp-for="Subject"
-                   class="form-control"
-                   placeholder="Subject" />
-            <span asp-validation-for="Subject"
-                  class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <textarea asp-for="Message"
-                      rows="6"
-                      class="form-control"
-                      placeholder="Message"></textarea>
-            <span asp-validation-for="Message"
-                  class="text-danger"></span>
-        </div>
-
-        <button class="btn btn-primary">
-            Send Message
-        </button>
-
-    </form>
-
-</section>
 
 <section id="projects" class="section-dark">
     <div class="container">
