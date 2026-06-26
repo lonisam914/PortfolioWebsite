@@ -1,0 +1,218 @@
+﻿@model PortfolioWebsite.Models.ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<link rel="stylesheet" href="~/css/contact.css" />
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+<div class="contact-page">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-subtitle">
+                <i class="fa-solid fa-paper-plane"></i>
+                GET IN TOUCH
+            </span>
+
+            <h1 class="display-3 fw-bold mt-3">
+                Contact <span class="gradient-text">Me</span>
+            </h1>
+
+            <p class="lead text-light mt-3">
+                Have a question or want to work together?
+                Feel free to send me a message.
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- LEFT SIDE -->
+
+            <div class="col-lg-4">
+
+                <div class="contact-card">
+
+                    <div class="icon-circle">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+
+                    <h2>Let's Connect</h2>
+
+                    <p>
+                        I'm always open to discussing
+                        new projects, freelance work,
+                        or .NET opportunities.
+                    </p>
+
+                    <hr>
+
+                    <div class="contact-info">
+
+                        <div class="info-item">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <div>
+                                <h6>Email</h6>
+                                <span>samarthloni@gmail.com</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fa-solid fa-phone"></i>
+
+                            <div>
+                                <h6>Phone</h6>
+                                <span>+91 91455 99447</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <div>
+                                <h6>Location</h6>
+                                <span>Solapur, Maharashtra</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fa-regular fa-clock"></i>
+
+                            <div>
+                                <h6>Response Time</h6>
+                                <span>Within 24 Hours</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="social-icons">
+
+                        <a href="#">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+
+            <div class="col-lg-8">
+
+                <div class="contact-card">
+
+                    <h2 class="mb-4">
+                        <i class="fa-regular fa-message"></i>
+                        Send Me a Message
+                    </h2>
+
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success">
+                            @TempData["Success"]
+                        </div>
+                    }
+
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            @TempData["Error"]
+                        </div>
+                    }
+
+                    <form asp-action="Contact" method="post">
+
+                        <div class="mb-4">
+
+                            <label>Name</label>
+
+                            <input asp-for="Name"
+                                   class="form-control"
+                                   placeholder="Enter your name" />
+
+                            <span asp-validation-for="Name"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label>Email</label>
+
+                            <input asp-for="Email"
+                                   class="form-control"
+                                   placeholder="Enter your email" />
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label>Subject</label>
+
+                            <input asp-for="Subject"
+                                   class="form-control"
+                                   placeholder="Enter subject" />
+
+                            <span asp-validation-for="Subject"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label>Message</label>
+
+                            <textarea asp-for="Message"
+                                      rows="6"
+                                      class="form-control"
+                                      placeholder="Write your message"></textarea>
+
+                            <span asp-validation-for="Message"
+                                  class="text-danger"></span>
+
+                        </div>
+
+                        <button class="btn send-btn w-100">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                            Send Message
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

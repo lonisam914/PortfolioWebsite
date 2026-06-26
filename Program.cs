@@ -1,3 +1,7 @@
+using PortfolioWebsite.Models;
+using PortfolioWebsite.Services;
+using PortfolioWebsite.Services.Interfaces;
+
 namespace PortfolioWebsite
 {
     public class Program
@@ -8,11 +12,16 @@ namespace PortfolioWebsite
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+			builder.Services.Configure<EmailSettings>(
+builder.Configuration.GetSection("EmailSettings"));
+			builder.Services.AddScoped<IEmailService, EmailService>();
 
-            var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
+			var app = builder.Build();
+	
+			
+			// Configure the HTTP request pipeline.
+			if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.

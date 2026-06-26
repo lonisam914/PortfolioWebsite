@@ -1,24 +1,26 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PortfolioWebsite.Models;
+using PortfolioWebsite.Services.Interfaces;
+using System.Diagnostics;
 
 namespace PortfolioWebsite.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+		private readonly IEmailService _emailService;
+		public HomeController(ILogger<HomeController> logger, IEmailService emailService)
         {
             _logger = logger;
-        }
+			_emailService = emailService;
+		}
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
+			return View(new ContactViewModel());
+		}
+	
+		public IActionResult Privacy()
         {
             return View();
         }
